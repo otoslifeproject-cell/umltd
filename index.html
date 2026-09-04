@@ -11,12 +11,14 @@
     :root {
       --bg: #070909;
       --text: #f4f5ef;
-      --muted: #a5aba6;
+      --muted: #a7ada8;
       --line: rgba(255,255,255,.13);
       --accent: #b9ff66;
-      --panel: rgba(5,7,7,.76);
-      --field: rgba(18,21,20,.82);
-      --gutter: clamp(32px, 5.2vw, 78px);
+      --glass: rgba(7,9,9,.28);
+      --glass-strong: rgba(7,9,9,.48);
+      --field: rgba(14,17,16,.58);
+      --gutter: clamp(32px, 5.5vw, 82px);
+      --max: 1320px;
     }
 
     * { box-sizing: border-box; }
@@ -28,10 +30,39 @@
 
     body {
       margin: 0;
+      min-height: 100%;
       color: var(--text);
       background: var(--bg);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg,
+          rgba(4,6,6,.92) 0%,
+          rgba(4,6,6,.82) 27%,
+          rgba(4,6,6,.48) 50%,
+          rgba(4,6,6,.10) 78%,
+          rgba(4,6,6,.06) 100%),
+        linear-gradient(180deg,
+          rgba(4,6,6,.16) 0%,
+          rgba(4,6,6,.06) 45%,
+          rgba(4,6,6,.56) 100%),
+        url("assets/background.png") center center / cover no-repeat;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
     }
 
     a {
@@ -39,88 +70,82 @@
       text-decoration: none;
     }
 
-    /* FIRST FRAME */
-    .landing {
-      position: relative;
+    .screen {
       min-height: 100svh;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg,
-          rgba(4,6,6,.94) 0%,
-          rgba(4,6,6,.88) 25%,
-          rgba(4,6,6,.62) 45%,
-          rgba(4,6,6,.18) 72%,
-          rgba(4,6,6,.08) 100%),
-        linear-gradient(180deg,
-          rgba(4,6,6,.18) 0%,
-          rgba(4,6,6,.08) 48%,
-          rgba(4,6,6,.66) 100%),
-        url("assets/background.png") center center / cover no-repeat;
+      padding: 0 var(--gutter);
     }
 
-    .landing-inner {
-      position: relative;
-      z-index: 1;
+    .inner {
+      width: min(100%, var(--max));
       min-height: 100svh;
-      padding:
-        clamp(28px, 3.2vh, 40px)
-        var(--gutter)
-        clamp(20px, 2.4vh, 30px);
+      margin: 0 auto;
+    }
+
+    /* SCREEN 1 */
+    .hero-screen .inner {
       display: grid;
       grid-template-rows: auto 1fr auto;
-      gap: 20px;
+      padding: clamp(34px, 4vh, 46px) 0 clamp(28px, 3.5vh, 42px);
+      gap: 24px;
     }
 
     .site-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 28px;
+      gap: 30px;
     }
 
     .brand img {
       display: block;
-      width: clamp(172px, 15vw, 220px);
+      width: clamp(175px, 15vw, 218px);
       height: auto;
     }
 
     .header-contact {
       display: flex;
       align-items: center;
-      gap: 24px;
-      padding-top: 11px;
+      gap: 28px;
+      padding-top: 10px;
+      color: rgba(255,255,255,.80);
       font-size: 13px;
-      color: rgba(255,255,255,.78);
       white-space: nowrap;
     }
 
     .header-contact a:hover {
-      color: var(--text);
+      color: #fff;
     }
 
-    .hero {
+    .hero-layout {
       align-self: center;
-      width: min(650px, 53vw);
-      padding: clamp(14px, 2vh, 24px) 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .72fr);
+      gap: clamp(52px, 7vw, 110px);
+      align-items: end;
+      padding: 44px 0 24px;
+    }
+
+    .hero-copy {
+      max-width: 680px;
     }
 
     .eyebrow {
-      margin: 0 0 15px;
+      margin: 0 0 17px;
       color: var(--accent);
       font-size: 11px;
       line-height: 1.2;
-      font-weight: 750;
+      font-weight: 760;
       letter-spacing: .22em;
       text-transform: uppercase;
     }
 
     h1 {
       margin: 0;
-      max-width: 650px;
-      font-size: clamp(54px, 5.7vw, 88px);
-      line-height: .98;
-      letter-spacing: -.058em;
-      font-weight: 760;
+      max-width: 680px;
+      font-size: clamp(58px, 6.4vw, 96px);
+      line-height: .94;
+      letter-spacing: -.065em;
+      font-weight: 770;
     }
 
     h1 span {
@@ -128,44 +153,157 @@
     }
 
     .lead {
-      margin: 20px 0 0;
-      max-width: 650px;
+      margin: 24px 0 0;
+      max-width: 630px;
       color: #e0e3de;
-      font-size: clamp(16px, 1.25vw, 19px);
-      line-height: 1.45;
-      font-weight: 560;
-      letter-spacing: -.01em;
+      font-size: clamp(17px, 1.35vw, 20px);
+      line-height: 1.5;
+      font-weight: 540;
     }
 
-    .enquiry-card {
-      width: min(520px, 100%);
-      margin-top: 18px;
-      padding: 13px;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    .primary-contact {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 27px;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+    }
+
+    .primary-contact a {
+      border-bottom: 1px solid rgba(255,255,255,.28);
+      padding-bottom: 2px;
+    }
+
+    .service-glass {
+      width: 100%;
+      padding: 18px 20px 8px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      background: var(--glass);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.12);
+    }
+
+    .service-intro {
+      margin: 0 0 15px;
+      color: rgba(255,255,255,.70);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .service-table {
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    .service-row span:last-child {
+      color: rgba(255,255,255,.52);
+      text-align: right;
+    }
+
+    .scroll-cue {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      color: rgba(255,255,255,.55);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::after {
+      content: "↓";
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* SCREEN 2 */
+    .enquiry-screen {
+      background: linear-gradient(180deg, rgba(5,7,7,.18), rgba(5,7,7,.64));
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .enquiry-screen .inner {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: clamp(70px, 9vh, 108px) 0 0;
+    }
+
+    .enquiry-layout {
+      align-self: center;
+      display: grid;
+      grid-template-columns: minmax(280px, .72fr) minmax(480px, 1.28fr);
+      gap: clamp(46px, 7vw, 96px);
+      align-items: center;
+      padding-bottom: 58px;
+    }
+
+    .enquiry-copy {
+      max-width: 440px;
+    }
+
+    .enquiry-copy h2 {
+      margin: 0;
+      font-size: clamp(42px, 4.7vw, 68px);
+      line-height: .98;
+      letter-spacing: -.052em;
+    }
+
+    .enquiry-copy p {
+      margin: 20px 0 0;
+      color: rgba(255,255,255,.67);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .contact-block {
+      margin-top: 28px;
+      display: grid;
+      gap: 7px;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+    }
+
+    .enquiry-glass {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      background: var(--glass-strong);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 22px 58px rgba(0,0,0,.18);
     }
 
     form {
       display: grid;
-      gap: 9px;
+      gap: 13px;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 9px;
+      gap: 13px;
     }
 
     label {
       display: grid;
-      gap: 5px;
-      color: rgba(255,255,255,.64);
+      gap: 6px;
+      color: rgba(255,255,255,.60);
       font-size: 9px;
-      font-weight: 650;
-      letter-spacing: .10em;
+      font-weight: 690;
+      letter-spacing: .11em;
       text-transform: uppercase;
     }
 
@@ -173,40 +311,40 @@
     textarea {
       width: 100%;
       border: 1px solid rgba(255,255,255,.13);
-      border-radius: 8px;
+      border-radius: 9px;
       outline: none;
       background: var(--field);
       color: var(--text);
       font: inherit;
       font-size: 13px;
-      padding: 9px 10px;
+      padding: 10px 11px;
       transition: border-color .2s ease, background .2s ease;
     }
 
     input {
-      height: 36px;
+      height: 39px;
     }
 
     textarea {
-      min-height: 82px;
+      min-height: 116px;
       resize: vertical;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     input:focus,
     textarea:focus {
       border-color: rgba(185,255,102,.62);
-      background: rgba(22,25,24,.92);
+      background: rgba(18,21,20,.76);
     }
 
     textarea::placeholder {
-      color: rgba(255,255,255,.34);
+      color: rgba(255,255,255,.30);
     }
 
     .form-actions {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 14px;
       flex-wrap: wrap;
       padding-top: 2px;
     }
@@ -215,12 +353,12 @@
       appearance: none;
       border: 0;
       border-radius: 999px;
-      padding: 10px 16px;
+      padding: 11px 17px;
       background: var(--accent);
-      color: #11140f;
+      color: #10130e;
       font: inherit;
       font-size: 11px;
-      font-weight: 780;
+      font-weight: 790;
       cursor: pointer;
     }
 
@@ -230,18 +368,18 @@
     }
 
     .form-note {
-      color: rgba(255,255,255,.48);
+      color: rgba(255,255,255,.46);
       font-size: 10px;
     }
 
     .form-message {
       display: none;
-      margin: 2px 0 0;
-      padding: 9px 10px;
+      margin: 0;
+      padding: 10px 11px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(7,9,9,.36);
       font-size: 11px;
-      line-height: 1.45;
-      border: 1px solid var(--line);
-      background: rgba(5,7,7,.72);
+      line-height: 1.5;
     }
 
     .form-message.show {
@@ -258,199 +396,115 @@
       color: #ffd5d5;
     }
 
-    .landing-footer {
+    .site-footer {
       border-top: 1px solid rgba(255,255,255,.12);
-      background: rgba(5,7,7,.58);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 14px 18px;
+      padding: 17px 0 22px;
       display: grid;
-      grid-template-columns: 1fr 1.2fr 1.4fr;
-      gap: 18px;
+      grid-template-columns: 1fr 1.15fr 1.35fr;
+      gap: 20px;
       align-items: center;
-      color: rgba(255,255,255,.50);
+      color: rgba(255,255,255,.46);
       font-size: 10px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    .landing-footer > :nth-child(2) {
+    .site-footer > :nth-child(2) {
       text-align: center;
     }
 
-    .landing-footer > :nth-child(3) {
+    .site-footer > :nth-child(3) {
       text-align: right;
     }
 
     .footer-contact {
-      color: rgba(255,255,255,.66);
+      color: rgba(255,255,255,.64);
     }
 
-    /* BELOW THE FOLD */
-    .learn-more {
-      background: #0a0c0c;
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding: 78px var(--gutter) 88px;
+    @media (max-width: 980px) {
+      .hero-layout,
+      .enquiry-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-layout {
+        align-items: start;
+        gap: 34px;
+      }
+
+      .service-glass {
+        max-width: 620px;
+      }
+
+      .enquiry-layout {
+        gap: 34px;
+      }
+
+      .enquiry-copy {
+        max-width: 620px;
+      }
+
+      .site-footer {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .site-footer > :nth-child(2),
+      .site-footer > :nth-child(3) {
+        text-align: left;
+      }
     }
 
-    .learn-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: .7fr 1.3fr;
-      gap: 72px;
-      align-items: start;
-    }
+    @media (max-width: 720px) {
+      :root {
+        --gutter: 24px;
+      }
 
-    .learn-more h2 {
-      margin: 0;
-      font-size: clamp(34px, 4vw, 56px);
-      letter-spacing: -.045em;
-      line-height: 1;
-    }
+      body::before {
+        background:
+          linear-gradient(90deg, rgba(4,6,6,.90), rgba(4,6,6,.48)),
+          linear-gradient(180deg, rgba(4,6,6,.12), rgba(4,6,6,.54)),
+          url("assets/background.png") 60% center / cover no-repeat;
+      }
 
-    .service-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .service {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 22px;
-      padding: 17px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 14px;
-    }
-
-    .service span:last-child {
-      color: var(--muted);
-      text-align: right;
-    }
-
-    @media (max-height: 820px) and (min-width: 901px) {
-      .landing-inner {
+      .hero-screen .inner {
         padding-top: 24px;
-        padding-bottom: 16px;
-        gap: 12px;
-      }
-
-      .brand img {
-        width: 176px;
-      }
-
-      .hero {
-        padding: 4px 0;
-      }
-
-      h1 {
-        font-size: clamp(52px, 5vw, 74px);
-      }
-
-      .lead {
-        margin-top: 14px;
-        font-size: 16px;
-      }
-
-      .enquiry-card {
-        margin-top: 13px;
-      }
-
-      textarea {
-        min-height: 68px;
-      }
-
-      .landing-footer {
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .landing {
-        min-height: 100svh;
-        background-position: 62% center;
-      }
-
-      .landing-inner {
-        min-height: 100svh;
       }
 
       .header-contact {
         display: none;
       }
 
-      .hero {
-        width: min(680px, 100%);
-      }
-
-      .landing-footer {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
-      .landing-footer > :nth-child(2),
-      .landing-footer > :nth-child(3) {
-        text-align: left;
-      }
-
-      .learn-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      :root {
-        --gutter: 20px;
-      }
-
-      .landing-inner {
-        padding-top: 22px;
-      }
-
       .brand img {
-        width: 165px;
-      }
-
-      .hero {
-        align-self: start;
-        padding-top: 90px;
+        width: 170px;
       }
 
       h1 {
-        font-size: clamp(48px, 15vw, 68px);
-      }
-
-      .lead {
-        font-size: 16px;
+        font-size: clamp(50px, 15vw, 72px);
       }
 
       .form-row {
         grid-template-columns: 1fr;
       }
 
-      textarea {
-        min-height: 104px;
-      }
-
-      .landing-footer {
-        margin-top: 10px;
-      }
-
-      .service {
+      .service-row {
         grid-template-columns: 1fr;
         gap: 5px;
       }
 
-      .service span:last-child {
+      .service-row span:last-child {
         text-align: left;
+      }
+
+      .enquiry-screen .inner {
+        padding-top: 64px;
       }
     }
   </style>
 </head>
 
 <body>
-  <section class="landing" id="top">
-    <div class="landing-inner">
+  <section class="screen hero-screen" id="top">
+    <div class="inner">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="UMLTD.UK home">
           <img src="assets/umltd-logo.svg" alt="UMLTD.UK — Universal Marketing Ltd">
@@ -459,19 +513,71 @@
         <div class="header-contact">
           <span>0203 XXX XXXX</span>
           <a href="mailto:info@umltd.uk">info@umltd.uk</a>
-          <a href="#learn">Learn more</a>
+          <a href="#enquiry">Enquiry</a>
         </div>
       </header>
 
-      <main class="hero">
-        <p class="eyebrow">Connected infrastructure</p>
-        <h1>Systems that <span>stay connected.</span></h1>
+      <main class="hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Connected infrastructure</p>
+          <h1>Systems that <span>stay connected.</span></h1>
+          <p class="lead">
+            We help organisations connect, monitor and maintain equipment operating beyond conventional fixed networks.
+          </p>
 
-        <p class="lead">
-          We help organisations connect, monitor and maintain equipment operating beyond conventional fixed networks.
-        </p>
+          <div class="primary-contact">
+            <span>0203 XXX XXXX</span>
+            <a href="mailto:info@umltd.uk">info@umltd.uk</a>
+          </div>
+        </div>
 
-        <div class="enquiry-card" id="enquiry">
+        <aside class="service-glass" aria-label="Services">
+          <p class="service-intro">
+            Managed connectivity and support for remote, distributed and machine-connected systems.
+          </p>
+
+          <div class="service-table">
+            <div class="service-row">
+              <span>Managed connectivity</span>
+              <span>Mobile · SIM · M2M</span>
+            </div>
+            <div class="service-row">
+              <span>Remote telemetry</span>
+              <span>Data · status · alerts</span>
+            </div>
+            <div class="service-row">
+              <span>Messaging services</span>
+              <span>SMS · notifications</span>
+            </div>
+            <div class="service-row">
+              <span>Connected systems</span>
+              <span>Integration · support</span>
+            </div>
+          </div>
+        </aside>
+      </main>
+
+      <a class="scroll-cue" href="#enquiry">Enquiry</a>
+    </div>
+  </section>
+
+  <section class="screen enquiry-screen" id="enquiry">
+    <div class="inner">
+      <div class="enquiry-layout">
+        <div class="enquiry-copy">
+          <p class="eyebrow">Get in touch</p>
+          <h2>Enquiries</h2>
+          <p>
+            If you need connectivity, telemetry, messaging or connected-system support, send us a short outline.
+          </p>
+
+          <div class="contact-block">
+            <span>0203 XXX XXXX</span>
+            <a href="mailto:info@umltd.uk">info@umltd.uk</a>
+          </div>
+        </div>
+
+        <div class="enquiry-glass">
           <form id="enquiryForm">
             <input type="hidden" name="_subject" value="New enquiry from UMLTD.UK">
             <input type="hidden" name="_captcha" value="false">
@@ -508,7 +614,7 @@
 
             <div class="form-actions">
               <button type="submit" id="submitButton">Send enquiry</button>
-              <span class="form-note">Submissions are sent to info@umltd.uk</span>
+              <span class="form-note">Sent to info@umltd.uk</span>
             </div>
 
             <p class="form-message success" id="successMessage" role="status">
@@ -520,9 +626,9 @@
             </p>
           </form>
         </div>
-      </main>
+      </div>
 
-      <footer class="landing-footer">
+      <footer class="site-footer">
         <span>© Universal Marketing Ltd</span>
         <span>
           Company No. 15820170 · Registered in England &amp; Wales<br>
@@ -533,34 +639,6 @@
           <span class="footer-contact">0203 XXX XXXX · info@umltd.uk</span>
         </span>
       </footer>
-    </div>
-  </section>
-
-  <section class="learn-more" id="learn">
-    <div class="learn-inner">
-      <div>
-        <p class="eyebrow">What we support</p>
-        <h2>Connected systems, managed simply.</h2>
-      </div>
-
-      <div class="service-list">
-        <div class="service">
-          <span>Managed connectivity</span>
-          <span>Mobile · SIM · M2M</span>
-        </div>
-        <div class="service">
-          <span>Remote telemetry</span>
-          <span>Data · status · alerts</span>
-        </div>
-        <div class="service">
-          <span>Messaging services</span>
-          <span>SMS · notifications</span>
-        </div>
-        <div class="service">
-          <span>Connected systems</span>
-          <span>Integration · support</span>
-        </div>
-      </div>
     </div>
   </section>
 
