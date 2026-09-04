@@ -32,16 +32,6 @@
       margin: 0;
       min-height: 100%;
       color: var(--text);
-      background: var(--bg);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
       background:
         linear-gradient(90deg,
           rgba(4,6,6,.92) 0%,
@@ -53,7 +43,13 @@
           rgba(4,6,6,.16) 0%,
           rgba(4,6,6,.06) 45%,
           rgba(4,6,6,.56) 100%),
-        url("assets/background.png") center center / cover no-repeat;
+        url("assets/background.png");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     body::after {
@@ -459,11 +455,15 @@
         --gutter: 24px;
       }
 
-      body::before {
+      body {
         background:
           linear-gradient(90deg, rgba(4,6,6,.90), rgba(4,6,6,.48)),
           linear-gradient(180deg, rgba(4,6,6,.12), rgba(4,6,6,.54)),
-          url("assets/background.png") 60% center / cover no-repeat;
+          url("assets/background.png");
+        background-position: 60% center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
       }
 
       .hero-screen .inner {

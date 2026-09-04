@@ -1,0 +1,15 @@
+<svg width="560" height="140" viewBox="0 0 560 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>UMLTD.UK</title>
+  <desc>Universal Marketing Ltd logo</desc>
+  <rect width="560" height="140" rx="18" fill="#0B0D0C"/>
+  <g transform="translate(30 30)">
+    <circle cx="40" cy="40" r="32" stroke="#B9FF66" stroke-width="4"/>
+    <path d="M14 40H66" stroke="#B9FF66" stroke-width="4" stroke-linecap="round"/>
+    <path d="M40 14V66" stroke="#B9FF66" stroke-width="4" stroke-linecap="round" opacity=".38"/>
+    <circle cx="40" cy="40" r="7" fill="#B9FF66"/>
+    <circle cx="14" cy="40" r="4.5" fill="#B9FF66"/>
+    <circle cx="66" cy="40" r="4.5" fill="#B9FF66"/>
+  </g>
+  <text x="128" y="68" fill="#F4F5EF" font-family="Inter, Arial, Helvetica, sans-serif" font-size="42" font-weight="750" letter-spacing="-1.5">UMLTD.UK</text>
+  <text x="130" y="94" fill="#919792" font-family="Inter, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="2.4">UNIVERSAL MARKETING LTD</text>
+</svg>
