@@ -3,696 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UMLTD.UK | Universal Marketing Ltd</title>
-  <meta name="description" content="Managed mobile connectivity, dedicated long numbers, IoT and M2M services, SMS broadcasting, remote telemetry and marketing communications.">
-  <meta name="theme-color" content="#070909">
-
-  <style>
-    :root {
-      --bg: #070909;
-      --text: #f4f5ef;
-      --muted: #a7ada8;
-      --line: rgba(255,255,255,.13);
-      --accent: #b9ff66;
-      --glass: rgba(7,9,9,.28);
-      --glass-strong: rgba(7,9,9,.48);
-      --field: rgba(14,17,16,.58);
-      --gutter: clamp(32px, 5.5vw, 82px);
-      --max: 1320px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--bg);
-    }
-
-    body {
-      margin: 0;
-      min-height: 100%;
-      color: var(--text);
-      background:
-        linear-gradient(90deg,
-          rgba(4,6,6,.92) 0%,
-          rgba(4,6,6,.82) 27%,
-          rgba(4,6,6,.48) 50%,
-          rgba(4,6,6,.10) 78%,
-          rgba(4,6,6,.06) 100%),
-        linear-gradient(180deg,
-          rgba(4,6,6,.16) 0%,
-          rgba(4,6,6,.06) 45%,
-          rgba(4,6,6,.56) 100%),
-        url("assets/background.png");
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .screen {
-      min-height: 100svh;
-      padding: 0 var(--gutter);
-    }
-
-    .inner {
-      width: min(100%, var(--max));
-      min-height: 100svh;
-      margin: 0 auto;
-    }
-
-    /* SCREEN 1 */
-    .hero-screen .inner {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: clamp(34px, 4vh, 46px) 0 clamp(28px, 3.5vh, 42px);
-      gap: 24px;
-    }
-
-    .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 30px;
-    }
-
-    .brand img {
-      display: block;
-      width: clamp(175px, 15vw, 218px);
-      height: auto;
-    }
-
-    .header-contact {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      padding-top: 10px;
-      color: rgba(255,255,255,.80);
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .header-contact a:hover {
-      color: #fff;
-    }
-
-    .hero-layout {
-      align-self: center;
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .72fr);
-      gap: clamp(52px, 7vw, 110px);
-      align-items: end;
-      padding: 44px 0 24px;
-    }
-
-    .hero-copy {
-      max-width: 680px;
-    }
-
-    .eyebrow {
-      margin: 0 0 17px;
-      color: var(--accent);
-      font-size: 11px;
-      line-height: 1.2;
-      font-weight: 760;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 680px;
-      font-size: clamp(58px, 6.4vw, 96px);
-      line-height: .94;
-      letter-spacing: -.065em;
-      font-weight: 770;
-    }
-
-    h1 span {
-      display: block;
-    }
-
-    .lead {
-      margin: 24px 0 0;
-      max-width: 630px;
-      color: #e0e3de;
-      font-size: clamp(17px, 1.35vw, 20px);
-      line-height: 1.5;
-      font-weight: 540;
-    }
-
-    .primary-contact {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-      margin-top: 27px;
-      color: rgba(255,255,255,.78);
-      font-size: 14px;
-    }
-
-    .primary-contact a {
-      border-bottom: 1px solid rgba(255,255,255,.28);
-      padding-bottom: 2px;
-    }
-
-    .service-glass {
-      width: 100%;
-      padding: 18px 20px 8px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 18px;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 18px 50px rgba(0,0,0,.12);
-    }
-
-    .service-intro {
-      margin: 0 0 15px;
-      color: rgba(255,255,255,.70);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .service-table {
-      border-top: 1px solid rgba(255,255,255,.14);
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 22px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      font-size: 13px;
-    }
-
-    .service-row span:last-child {
-      color: rgba(255,255,255,.52);
-      text-align: right;
-    }
-
-    .scroll-cue {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: fit-content;
-      color: rgba(255,255,255,.55);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .scroll-cue::after {
-      content: "↓";
-      color: var(--accent);
-      font-size: 16px;
-      line-height: 1;
-    }
-
-    /* SCREEN 2 */
-    .enquiry-screen {
-      background: linear-gradient(180deg, rgba(5,7,7,.18), rgba(5,7,7,.64));
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
-    .enquiry-screen .inner {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding: clamp(70px, 9vh, 108px) 0 0;
-    }
-
-    .enquiry-layout {
-      align-self: center;
-      display: grid;
-      grid-template-columns: minmax(280px, .72fr) minmax(480px, 1.28fr);
-      gap: clamp(46px, 7vw, 96px);
-      align-items: center;
-      padding-bottom: 58px;
-    }
-
-    .enquiry-copy {
-      max-width: 440px;
-    }
-
-    .enquiry-copy h2 {
-      margin: 0;
-      font-size: clamp(42px, 4.7vw, 68px);
-      line-height: .98;
-      letter-spacing: -.052em;
-    }
-
-    .enquiry-copy p {
-      margin: 20px 0 0;
-      color: rgba(255,255,255,.67);
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    .contact-block {
-      margin-top: 28px;
-      display: grid;
-      gap: 7px;
-      color: rgba(255,255,255,.78);
-      font-size: 14px;
-    }
-
-    .enquiry-glass {
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 20px;
-      background: var(--glass-strong);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 22px 58px rgba(0,0,0,.18);
-    }
-
-    form {
-      display: grid;
-      gap: 13px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 13px;
-    }
-
-    label {
-      display: grid;
-      gap: 6px;
-      color: rgba(255,255,255,.60);
-      font-size: 9px;
-      font-weight: 690;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 9px;
-      outline: none;
-      background: var(--field);
-      color: var(--text);
-      font: inherit;
-      font-size: 13px;
-      padding: 10px 11px;
-      transition: border-color .2s ease, background .2s ease;
-    }
-
-    input {
-      height: 39px;
-    }
-
-    textarea {
-      min-height: 116px;
-      resize: vertical;
-      line-height: 1.45;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: rgba(185,255,102,.62);
-      background: rgba(18,21,20,.76);
-    }
-
-    textarea::placeholder {
-      color: rgba(255,255,255,.30);
-    }
-
-    .form-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding-top: 2px;
-    }
-
-    button {
-      appearance: none;
-      border: 0;
-      border-radius: 999px;
-      padding: 11px 17px;
-      background: var(--accent);
-      color: #10130e;
-      font: inherit;
-      font-size: 11px;
-      font-weight: 790;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .68;
-      cursor: wait;
-    }
-
-    .form-note {
-      color: rgba(255,255,255,.46);
-      font-size: 10px;
-    }
-
-    .form-message {
-      display: none;
-      margin: 0;
-      padding: 10px 11px;
-      border: 1px solid rgba(255,255,255,.13);
-      background: rgba(7,9,9,.36);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .form-message.show {
-      display: block;
-    }
-
-    .form-message.success {
-      border-color: rgba(185,255,102,.34);
-      color: #e9f8d5;
-    }
-
-    .form-message.error {
-      border-color: rgba(255,130,130,.34);
-      color: #ffd5d5;
-    }
-
-    .site-footer {
-      border-top: 1px solid rgba(255,255,255,.12);
-      padding: 17px 0 22px;
-      display: grid;
-      grid-template-columns: 1fr 1.15fr 1.35fr;
-      gap: 20px;
-      align-items: center;
-      color: rgba(255,255,255,.46);
-      font-size: 10px;
-      line-height: 1.55;
-    }
-
-    .site-footer > :nth-child(2) {
-      text-align: center;
-    }
-
-    .site-footer > :nth-child(3) {
-      text-align: right;
-    }
-
-    .footer-contact {
-      color: rgba(255,255,255,.64);
-    }
-
-    @media (max-width: 980px) {
-      .hero-layout,
-      .enquiry-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-layout {
-        align-items: start;
-        gap: 34px;
-      }
-
-      .service-glass {
-        max-width: 620px;
-      }
-
-      .enquiry-layout {
-        gap: 34px;
-      }
-
-      .enquiry-copy {
-        max-width: 620px;
-      }
-
-      .site-footer {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
-      .site-footer > :nth-child(2),
-      .site-footer > :nth-child(3) {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 720px) {
-      :root {
-        --gutter: 24px;
-      }
-
-      body {
-        background:
-          linear-gradient(90deg, rgba(4,6,6,.90), rgba(4,6,6,.48)),
-          linear-gradient(180deg, rgba(4,6,6,.12), rgba(4,6,6,.54)),
-          url("assets/background.png");
-        background-position: 60% center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-
-      .hero-screen .inner {
-        padding-top: 24px;
-      }
-
-      .header-contact {
-        display: none;
-      }
-
-      .brand img {
-        width: 170px;
-      }
-
-      h1 {
-        font-size: clamp(50px, 15vw, 72px);
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .service-row {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
-      .service-row span:last-child {
-        text-align: left;
-      }
-
-      .enquiry-screen .inner {
-        padding-top: 64px;
-      }
-    }
-  </style>
+  <title>UMLTD.UK | Connected Infrastructure & Messaging</title>
+  <meta name="description" content="Managed IoT and M2M connectivity, dedicated long numbers, remote telemetry, SMS broadcasting, marketing communications and connected-system support.">
+  <meta name="theme-color" content="#080a0a">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-
 <body>
-  <section class="screen hero-screen" id="top">
-    <div class="inner">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="UMLTD.UK home">
-          <img src="assets/umltd-logo.svg" alt="UMLTD.UK — Universal Marketing Ltd">
-        </a>
+<header class="site-header home-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="UMLTD.UK home"><img src="assets/umltd-logo.svg" alt="UMLTD.UK — Universal Marketing Ltd"></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="solutions.html" >Solutions</a>
+      <a href="about.html" >About us</a>
+      <a href="contact.html" >Contact</a>
+      <a class="nav-cta" href="contact.html">Discuss a requirement</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="header-contact">
-          <span>+442039166252</span>
-          <a href="mailto:info@umltd.uk">info@umltd.uk</a>
-          <a href="#enquiry">Enquiry</a>
-        </div>
-      </header>
-
-      <main class="hero-layout">
+<main>
+  <section class="hero-home">
+    <div class="container">
+      <div class="hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Connected infrastructure</p>
           <h1>Systems that <span>stay connected.</span></h1>
-          <p class="lead">
-            We help organisations connect, monitor and maintain equipment operating beyond conventional fixed networks.
-          </p>
-
+          <p class="lead">Managed connectivity, messaging and telemetry for remote, distributed and machine-connected systems — with practical digital communications for the organisations behind them.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="solutions.html">Explore solutions</a>
+            <a class="button" href="contact.html">Discuss a requirement</a>
+          </div>
         </div>
-
-        <aside class="service-glass" aria-label="Services">
-          <p class="service-intro">
-            Managed communications, messaging and IoT services for remote, distributed and machine-connected systems.
-          </p>
-
-          <div class="service-table">
-            <div class="service-row">
-              <span>Dedicated long numbers</span>
-              <span>Provisioning · rental · management</span>
-            </div>
-            <div class="service-row">
-              <span>IoT / M2M connectivity</span>
-              <span>SIM · cellular · device data</span>
-            </div>
-            <div class="service-row">
-              <span>Remote telemetry</span>
-              <span>Sensor data · status · alerts</span>
-            </div>
-            <div class="service-row">
-              <span>SMS broadcasting</span>
-              <span>Campaigns · alerts · notifications</span>
-            </div>
-            <div class="service-row">
-              <span>Marketing solutions</span>
-              <span>Customer messaging · engagement</span>
-            </div>
-            <div class="service-row">
-              <span>Connected systems</span>
-              <span>Integration · monitoring · support</span>
-            </div>
+        <aside class="hero-panel" aria-label="Core services">
+          <p>We provide the communications layer that helps equipment, applications and people exchange information reliably across mobile networks.</p>
+          <div class="mini-list">
+            <div class="mini-row"><span>Dedicated long numbers</span><span>Provisioning · rental · management</span></div>
+            <div class="mini-row"><span>IoT / M2M connectivity</span><span>SIM · cellular · device data</span></div>
+            <div class="mini-row"><span>SMS &amp; messaging</span><span>Broadcast · alerts · notifications</span></div>
+            <div class="mini-row"><span>Remote telemetry</span><span>Status · sensor data · monitoring</span></div>
           </div>
         </aside>
-      </main>
-
-      <a class="scroll-cue" href="#enquiry">Enquiry</a>
-    </div>
-  </section>
-
-  <section class="screen enquiry-screen" id="enquiry">
-    <div class="inner">
-      <div class="enquiry-layout">
-        <div class="enquiry-copy">
-          <p class="eyebrow">Connected services</p>
-          <h2>Communications for systems that operate beyond the office.</h2>
-          <p>
-            We provide managed cellular connectivity and messaging for organisations that need equipment, devices or remote locations to report data, send alerts or remain reachable without relying on a conventional fixed internet connection.
-          </p>
-          <p>
-            Services can include dedicated long-number rental, SIM and M2M connectivity, remote telemetry, sensor and status reporting, SMS broadcasting, operational alerts and customer communications.
-          </p>
-          <p>
-            We also provide practical marketing and messaging solutions for organisations that need reliable outbound SMS, customer notifications and campaign communications alongside their connected infrastructure.
-          </p>
-
-          <div class="contact-block">
-            <span>+442039166252</span>
-            <a href="mailto:info@umltd.uk">info@umltd.uk</a>
-          </div>
-        </div>
-
-        <div class="enquiry-glass">
-          <form id="enquiryForm">
-            <input type="hidden" name="_subject" value="New enquiry from UMLTD.UK">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
-
-            <div class="form-row">
-              <label>
-                Name
-                <input type="text" name="name" autocomplete="name" required>
-              </label>
-
-              <label>
-                Email
-                <input type="email" name="email" autocomplete="email" required>
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>
-                Company
-                <input type="text" name="company" autocomplete="organization">
-              </label>
-
-              <label>
-                Phone
-                <input type="tel" name="phone" autocomplete="tel">
-              </label>
-            </div>
-
-            <label>
-              Enquiry
-              <textarea name="message" required placeholder="Tell us a little about what you need."></textarea>
-            </label>
-
-            <div class="form-actions">
-              <button type="submit" id="submitButton">Send enquiry</button>
-              <span class="form-note">Sent to info@umltd.uk</span>
-            </div>
-
-            <p class="form-message success" id="successMessage" role="status">
-              Thank you. Your enquiry has been sent and we will be in touch soon.
-            </p>
-
-            <p class="form-message error" id="errorMessage" role="alert">
-              Sorry, there was a problem sending your enquiry. Please try again or email info@umltd.uk directly.
-            </p>
-          </form>
-        </div>
       </div>
-
-      <footer class="site-footer">
-        <span>© Universal Marketing Ltd</span>
-        <span>
-          Company No. 15820170 · Registered in England &amp; Wales<br>
-          ICO application reference: C2023269
-        </span>
-        <span>
-          3rd Floor, 86–90 Paul Street, London, EC2A 4NE<br>
-          <span class="footer-contact">+442039166252 · info@umltd.uk</span>
-        </span>
-      </footer>
     </div>
   </section>
 
-  <script>
-    const form = document.getElementById('enquiryForm');
-    const submitButton = document.getElementById('submitButton');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-item"><strong>Remote-ready</strong><span>Connectivity options for sites and equipment beyond conventional fixed networks.</span></div>
+      <div class="trust-item"><strong>Managed service</strong><span>Provisioning, number management and ongoing communications support.</span></div>
+      <div class="trust-item"><strong>Machine-to-machine</strong><span>Services designed around unattended devices, telemetry and operational data.</span></div>
+      <div class="trust-item"><strong>Business messaging</strong><span>Operational SMS, notifications and outbound customer communications.</span></div>
+    </div>
+  </section>
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Solutions</p><h2>One communications partner across connected operations.</h2></div>
+        <p>UMLTD.UK supports organisations that need dependable connectivity between field equipment, digital platforms and people. Our services span cellular IoT, dedicated long numbers, telemetry, SMS and marketing communications, with integration and support where required.</p>
+      </div>
+      <div class="solution-grid">
+        <article class="card"><span class="card-index">01</span><h3>Dedicated long numbers</h3><p>Managed rental and administration of dedicated long numbers for messaging, device communications and application workflows.</p><a href="solutions.html#numbers">Learn more</a></article>
+        <article class="card"><span class="card-index">02</span><h3>IoT &amp; M2M connectivity</h3><p>Cellular connectivity for devices that need to exchange data without depending on local broadband or Wi-Fi infrastructure.</p><a href="solutions.html#iot">Learn more</a></article>
+        <article class="card"><span class="card-index">03</span><h3>Remote telemetry</h3><p>Connectivity and messaging for sensor readings, status reporting, equipment events and remote operational monitoring.</p><a href="solutions.html#telemetry">Learn more</a></article>
+        <article class="card"><span class="card-index">04</span><h3>SMS broadcasting</h3><p>Outbound SMS for operational notices, customer updates, service communications, alerts and targeted campaigns.</p><a href="solutions.html#sms">Learn more</a></article>
+        <article class="card"><span class="card-index">05</span><h3>Marketing communications</h3><p>Practical messaging and digital engagement services that help organisations communicate with customers clearly and consistently.</p><a href="solutions.html#marketing">Learn more</a></article>
+        <article class="card"><span class="card-index">06</span><h3>Integration &amp; support</h3><p>Support connecting device data, messaging events and communications services into the systems an organisation already uses.</p><a href="solutions.html#integration">Learn more</a></article>
+      </div>
+    </div>
+  </section>
 
-      successMessage.classList.remove('show');
-      errorMessage.classList.remove('show');
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending…';
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Where it fits</p><h2>Designed for real operational constraints.</h2></div>
+        <p>Connected systems do not always live in offices or datacentres. They may be installed in temporary, distributed or low-infrastructure environments where the communications path needs to be simple, resilient and manageable.</p>
+      </div>
+      <div class="usecase-grid">
+        <div class="usecase"><h3>Remote locations</h3><p>Mobile-network communications for equipment operating where fixed internet access is unavailable, impractical or unnecessary.</p></div>
+        <div class="usecase"><h3>Unattended equipment</h3><p>Device communications that can support periodic reporting, status messages, alerts and exception-driven monitoring.</p></div>
+        <div class="usecase"><h3>Distributed estates</h3><p>A consistent communications approach across multiple sites, nodes, devices or field installations.</p></div>
+        <div class="usecase"><h3>Customer communications</h3><p>SMS broadcasts, service notifications and campaign messaging when organisations need a direct, established mobile channel.</p></div>
+      </div>
+    </div>
+  </section>
 
-      const data = Object.fromEntries(new FormData(form).entries());
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">How we work</p><h2>Clear scope. Practical delivery.</h2></div>
+        <p>We focus on the communications requirement first: what needs to connect, what information needs to move, where it needs to go and how the service should be managed once deployed.</p>
+      </div>
+      <div class="process">
+        <div class="process-step"><b>01</b><h3>Define</h3><p>Understand the devices, locations, messaging flows and operational requirements.</p></div>
+        <div class="process-step"><b>02</b><h3>Provision</h3><p>Set up the relevant numbers, connectivity and messaging components.</p></div>
+        <div class="process-step"><b>03</b><h3>Integrate</h3><p>Connect communications into the required application, monitoring or business workflow.</p></div>
+        <div class="process-step"><b>04</b><h3>Support</h3><p>Maintain the service and adapt it as the deployment or communications requirement changes.</p></div>
+      </div>
+    </div>
+  </section>
 
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/info@umltd.uk', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            ...data,
-            _subject: 'New enquiry from UMLTD.UK',
-            _captcha: 'false'
-          })
-        });
-
-        if (!response.ok) throw new Error('Submission failed');
-
-        form.reset();
-        successMessage.classList.add('show');
-      } catch (error) {
-        errorMessage.classList.add('show');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send enquiry';
-      }
-    });
-  </script>
+  <section class="section alt">
+    <div class="container">
+      <div class="cta-panel">
+        <div><h2>Have a connected-system or messaging requirement?</h2><p>Tell us what needs to communicate, where it operates and what the service needs to achieve. We can help shape the connectivity and messaging approach.</p></div>
+        <a class="button primary" href="contact.html">Contact UMLTD.UK</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <img src="assets/umltd-logo.svg" alt="UMLTD.UK — Universal Marketing Ltd">
+      <p>Managed connectivity, messaging, telemetry and digital communications for connected systems and organisations operating beyond conventional fixed networks.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+442039166252">+44 (0)20 3916 6252</a>
+      <a href="mailto:info@umltd.uk">info@umltd.uk</a>
+      <span>3rd Floor, 86–90 Paul Street<br>London, EC2A 4NE</span>
+    </div>
+  </div>
+  <div class="container footer-legal">
+    <span>© Universal Marketing Ltd · Company No. 15820170 · Registered in England &amp; Wales</span>
+    <span>ICO application reference: C2023269</span>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
 </body>
 </html>
