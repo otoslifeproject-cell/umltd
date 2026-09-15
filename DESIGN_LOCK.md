@@ -34,3 +34,15 @@ This file defines the visual source of truth for UMLTD.UK.
 - Changing the hero image/crop/composition.
 - Changing global typography, colours, radii, navigation geometry or section alternation.
 - Replacing the dark/lighter alternating surface system.
+
+
+## DESIGN-LOCK-1.1 — Approved interaction/rhythm update
+
+The following is now part of the locked site design and must be preserved:
+
+- Repeated list/detail rows alternate between two restrained dark/green-tinted surfaces.
+- Repeated cards use the same alternating visual rhythm where appropriate.
+- Hoverable repeated content rises subtly by approximately 4–5px with a restrained shadow and lime-tinted border.
+- Hover movement is disabled when the visitor has `prefers-reduced-motion` enabled.
+- These effects are applied consistently across Solutions, Industries, Governance, About, Home and other pages where the shared component classes occur.
+- Do not remove or restyle these behaviours unless the user explicitly requests a design change.

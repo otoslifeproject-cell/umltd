@@ -686,3 +686,165 @@ input:focus, textarea:focus { border-color: rgba(185,255,102,.58); background: r
     border-bottom: 0;
   }
 }
+
+
+/* =========================================================
+   DESIGN-LOCK-1.1 — LIST RHYTHM + INTERACTION ENHANCEMENT
+   Explicitly approved: 15 Sep 2026
+   Applies site-wide where repeated rows/cards are present.
+   Do not alter without an explicit design-unlock/change request.
+   ========================================================= */
+
+/* Alternating surfaces for long repeated detail lists */
+.detail-list .detail-row {
+  position: relative;
+  margin: 0;
+  padding: 42px 28px;
+  border-bottom: 1px solid var(--line);
+  transition:
+    transform .22s ease,
+    background-color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.detail-list .detail-row:nth-child(odd) {
+  background: rgba(255,255,255,.018);
+}
+.detail-list .detail-row:nth-child(even) {
+  background: rgba(185,255,102,.026);
+}
+.detail-list .detail-row:hover {
+  transform: translateY(-5px);
+  border-color: rgba(185,255,102,.24);
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+  z-index: 2;
+}
+
+/* Repeated cards across the site */
+.card,
+.industry-card,
+.assurance-card,
+.value,
+.feature-link {
+  transition:
+    transform .22s ease,
+    background-color .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+.card:nth-child(even),
+.industry-card:nth-child(even),
+.assurance-card:nth-child(even),
+.value:nth-child(even) {
+  background-color: rgba(185,255,102,.022);
+}
+.card:nth-child(odd),
+.industry-card:nth-child(odd),
+.assurance-card:nth-child(odd),
+.value:nth-child(odd) {
+  background-color: rgba(255,255,255,.022);
+}
+.card:hover,
+.industry-card:hover,
+.assurance-card:hover,
+.value:hover,
+.feature-link:hover {
+  transform: translateY(-5px);
+  border-color: rgba(185,255,102,.24);
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+}
+
+/* Alternating row-style content blocks */
+.challenge-row,
+.usecase,
+.principle,
+.process-step,
+.lifecycle-step {
+  transition:
+    transform .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+.challenge-row:nth-child(even),
+.usecase:nth-child(even),
+.principle:nth-child(even),
+.process-step:nth-child(even),
+.lifecycle-step:nth-child(even) {
+  background: rgba(185,255,102,.020);
+}
+.challenge-row:nth-child(odd),
+.usecase:nth-child(odd),
+.principle:nth-child(odd),
+.process-step:nth-child(odd),
+.lifecycle-step:nth-child(odd) {
+  background: rgba(255,255,255,.014);
+}
+.challenge-row:hover,
+.usecase:hover,
+.principle:hover,
+.process-step:hover,
+.lifecycle-step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(185,255,102,.20);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+  z-index: 2;
+}
+
+/* Improve visual grouping without turning rows into cards */
+.challenge-row,
+.usecase,
+.principle {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+.process-step,
+.lifecycle-step {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .detail-list .detail-row,
+  .card,
+  .industry-card,
+  .assurance-card,
+  .value,
+  .feature-link,
+  .challenge-row,
+  .usecase,
+  .principle,
+  .process-step,
+  .lifecycle-step {
+    transition: none;
+  }
+
+  .detail-list .detail-row:hover,
+  .card:hover,
+  .industry-card:hover,
+  .assurance-card:hover,
+  .value:hover,
+  .feature-link:hover,
+  .challenge-row:hover,
+  .usecase:hover,
+  .principle:hover,
+  .process-step:hover,
+  .lifecycle-step:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .detail-list .detail-row {
+    padding: 30px 18px;
+  }
+  .challenge-row,
+  .usecase,
+  .principle,
+  .process-step,
+  .lifecycle-step {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
