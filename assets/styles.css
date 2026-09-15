@@ -1,7 +1,19 @@
-/* UMLTD.UK shared stylesheet */
+/*
+ * UMLTD.UK — LOCKED DESIGN SYSTEM
+ * Version: DESIGN-LOCK-1.0 — 15 September 2026
+ *
+ * This stylesheet is the visual source of truth for the UMLTD.UK site.
+ * Do not restyle, replace, append competing overrides, alter the hero composition,
+ * card geometry, typography scale, alternating section-header layout, background
+ * treatment or colour system unless the site owner explicitly asks to UNLOCK DESIGN.
+ * Content-only edits must preserve this file unchanged.
+ */
+
 :root {
   --bg: #080a0a;
-  --bg-soft: #0d1010;
+  --bg-soft: #171c19;
+  --bg-soft-2: #1d231f;
+  --bg-mid: #101411;
   --panel: rgba(12, 15, 14, .72);
   --panel-solid: #111413;
   --text: #f3f4ee;
@@ -116,7 +128,7 @@ button, input, textarea, select { font: inherit; }
   align-items: center;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(4,6,6,.94) 0%, rgba(4,6,6,.84) 29%, rgba(4,6,6,.50) 50%, rgba(4,6,6,.12) 78%, rgba(4,6,6,.06) 100%),
+    linear-gradient(90deg, rgba(4,6,6,.94) 0%, rgba(4,6,6,.84) 29%, rgba(4,6,6,.48) 48%, rgba(4,6,6,.08) 72%, rgba(4,6,6,.025) 100%),
     linear-gradient(180deg, rgba(4,6,6,.28) 0%, rgba(4,6,6,.08) 48%, rgba(4,6,6,.72) 100%),
     url("background.png") center center / cover no-repeat;
 }
@@ -131,30 +143,31 @@ button, input, textarea, select { font: inherit; }
 .hero-home .container {
   position: relative;
   z-index: 2;
-  padding-top: 150px;
-  padding-bottom: 88px;
+  padding-top: 154px;
+  padding-bottom: 94px;
 }
 .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, .68fr);
-  gap: clamp(50px, 7vw, 110px);
-  align-items: end;
+  display: block;
+  width: 100%;
 }
-.hero-copy { max-width: 720px; }
+.hero-copy {
+  width: min(880px, 68vw);
+  max-width: none;
+}
 .hero-copy h1 {
   margin: 0;
-  max-width: 720px;
-  font-size: clamp(60px, 7vw, 108px);
-  line-height: .91;
-  letter-spacing: -.07em;
-  font-weight: 780;
+  max-width: 880px;
+  font-size: clamp(76px, 8.2vw, 126px);
+  line-height: .88;
+  letter-spacing: -.074em;
+  font-weight: 790;
 }
 .hero-copy h1 span { display: block; color: #dfe3dd; font-weight: 590; }
 .hero-copy .lead {
-  max-width: 660px;
-  margin: 28px 0 0;
+  max-width: 720px;
+  margin: 30px 0 0;
   color: #d8ddd7;
-  font-size: clamp(18px, 1.55vw, 22px);
+  font-size: clamp(18px, 1.5vw, 22px);
   line-height: 1.5;
   letter-spacing: -.015em;
 }
@@ -178,20 +191,6 @@ button, input, textarea, select { font: inherit; }
 .button.primary { background: var(--accent); color: #11140f; border-color: var(--accent); }
 .button.primary:hover { background: #c5ff7c; }
 
-.hero-panel {
-  width: 100%;
-  padding: 23px 24px 12px;
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: var(--radius);
-  background: rgba(6,8,8,.34);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.18);
-}
-.hero-panel p { margin: 0 0 17px; color: rgba(255,255,255,.68); font-size: 13px; line-height: 1.65; }
-.mini-list { border-top: 1px solid var(--line); }
-.mini-row { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
-.mini-row span:last-child { color: rgba(255,255,255,.47); text-align: right; }
 
 .trust-strip { background: var(--bg); border-bottom: 1px solid var(--line); }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -201,14 +200,57 @@ button, input, textarea, select { font: inherit; }
 .trust-item strong { display: block; font-size: 13px; margin-bottom: 6px; }
 .trust-item span { color: var(--muted); font-size: 12px; line-height: 1.5; }
 
-.section { padding: clamp(72px, 8vw, 112px) 0; }
-.section.alt { background: var(--bg-soft); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-.section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; align-items: start; margin-bottom: 48px; }
-.section-head h2, .page-intro h1 {
+.section { padding: clamp(86px, 9vw, 132px) 0; }
+/* Interior pages step out of the hero into a lifted surface instead of another black block. */
+.page-hero + .section:not(.alt) {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255,255,255,.025), transparent 30%),
+    linear-gradient(180deg, #121713, var(--bg-mid));
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.section.alt {
+  position: relative;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(185,255,102,.045), transparent 34%),
+    linear-gradient(180deg, var(--bg-soft-2), var(--bg-soft));
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(54px, 8vw, 120px);
+  align-items: start;
+  margin-bottom: 54px;
+}
+.section-head > div:first-child { max-width: 650px; }
+.section-head > p { max-width: 650px; }
+.section-head--left > div:first-child { grid-column: 1; grid-row: 1; }
+.section-head--left > p { grid-column: 2; grid-row: 1; }
+.section-head--right > div:first-child {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  text-align: right;
+}
+.section-head--right > p {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  padding-top: 4px;
+}
+.section-head h2 {
   margin: 0;
-  font-size: clamp(40px, 5vw, 68px);
+  font-size: clamp(40px, 4.7vw, 66px);
   line-height: .98;
   letter-spacing: -.05em;
+}
+.page-intro h1 {
+  margin: 0;
+  max-width: 980px;
+  font-size: clamp(58px, 6.4vw, 94px);
+  line-height: .94;
+  letter-spacing: -.058em;
 }
 .section-head p { margin: 2px 0 0; max-width: 680px; color: var(--muted); font-size: 16px; line-height: 1.72; }
 
@@ -220,8 +262,17 @@ button, input, textarea, select { font: inherit; }
   border-radius: var(--radius);
   background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
 }
-.card-index { color: var(--accent); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
-.card h3 { margin: 40px 0 11px; font-size: 21px; letter-spacing: -.025em; }
+.card-index {
+  display: block;
+  color: var(--accent);
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1;
+  font-weight: 650;
+  letter-spacing: -.03em;
+  text-transform: none;
+  opacity: .95;
+}
+.card h3 { margin: 34px 0 11px; font-size: 22px; letter-spacing: -.025em; }
 .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 .card a { display: inline-block; margin-top: 20px; color: var(--soft); font-size: 12px; border-bottom: 1px solid rgba(255,255,255,.22); }
 
@@ -254,7 +305,7 @@ button, input, textarea, select { font: inherit; }
 
 .page-hero {
   position: relative;
-  min-height: 520px;
+  min-height: 600px;
   display: flex;
   align-items: end;
   overflow: hidden;
@@ -264,9 +315,9 @@ button, input, textarea, select { font: inherit; }
     url("background.png") center 42% / cover no-repeat;
 }
 .page-hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 100px; background: linear-gradient(to bottom, transparent, var(--bg)); }
-.page-hero .container { position: relative; z-index: 2; padding-top: 92px; padding-bottom: 76px; }
-.page-intro { max-width: 820px; }
-.page-intro p { margin: 22px 0 0; max-width: 720px; color: #d5dad4; font-size: 18px; line-height: 1.6; }
+.page-hero .container { position: relative; z-index: 2; padding-top: 118px; padding-bottom: 86px; }
+.page-intro { max-width: 1020px; }
+.page-intro p { margin: 25px 0 0; max-width: 760px; color: #d5dad4; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.62; }
 
 .detail-list { border-top: 1px solid var(--line); }
 .detail-row { display: grid; grid-template-columns: .55fr 1.45fr; gap: 60px; padding: 42px 0; border-bottom: 1px solid var(--line); }
@@ -333,10 +384,18 @@ input:focus, textarea:focus { border-color: rgba(185,255,102,.58); background: r
   .nav a { padding: 12px 10px; }
   .nav a[aria-current="page"]::after { display: none; }
   .menu-button { display: inline-flex; }
-  .hero-grid, .section-head, .about-grid, .contact-layout { grid-template-columns: 1fr; }
-  .hero-grid { align-items: start; }
-  .hero-panel { max-width: 650px; }
-  .section-head { gap: 20px; }
+  .section-head, .about-grid, .contact-layout { grid-template-columns: 1fr; }
+  .section-head { row-gap: 20px; }
+  .section-head--left > div:first-child,
+  .section-head--left > p,
+  .section-head--right > div:first-child,
+  .section-head--right > p {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    text-align: left;
+    padding-top: 0;
+  }
   .solution-grid { grid-template-columns: repeat(2, 1fr); }
   .process { grid-template-columns: repeat(2, 1fr); }
   .process-step:nth-child(2) { border-right: 0; }
@@ -354,10 +413,9 @@ input:focus, textarea:focus { border-color: rgba(185,255,102,.58); background: r
   .brand img { width: 168px; }
   .hero-home { background-position: 62% center; }
   .hero-home .container { padding-top: 126px; padding-bottom: 66px; }
-  .hero-copy h1 { font-size: clamp(50px, 15vw, 72px); }
+  .hero-copy { width: 100%; }
+  .hero-copy h1 { font-size: clamp(58px, 16vw, 82px); line-height: .9; }
   .hero-copy .lead { font-size: 17px; }
-  .mini-row { grid-template-columns: 1fr; gap: 4px; }
-  .mini-row span:last-child { text-align: left; }
   .trust-grid, .solution-grid, .usecase-grid, .process { grid-template-columns: 1fr; }
   .trust-item { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .trust-item:last-child { border-bottom: 0; }
@@ -367,8 +425,8 @@ input:focus, textarea:focus { border-color: rgba(185,255,102,.58); background: r
   .process-step, .process-step:first-child, .process-step:nth-child(3), .process-step:last-child { padding: 22px 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .process-step:last-child { border-bottom: 0; }
   .cta-panel { grid-template-columns: 1fr; padding: 28px 24px; }
-  .page-hero { min-height: 460px; }
-  .page-hero .container { padding-top: 76px; padding-bottom: 58px; }
+  .page-hero { min-height: 520px; }
+  .page-hero .container { padding-top: 92px; padding-bottom: 66px; }
   .page-intro p { font-size: 16px; }
   .detail-copy ul { grid-template-columns: 1fr; }
   .fact { grid-template-columns: 1fr; gap: 4px; }
